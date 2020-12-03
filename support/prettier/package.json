@@ -1,0 +1,14 @@
+{
+  "name": "prettier",
+  "version": "0.1.0",
+  "description": "Dockerized formatter",
+  "devDependencies": {
+    "prettier": "^2.0.5",
+    "prettier-plugin-import-sort": "^0.0.4",
+    "prettier-plugin-sh": "^0.6.0"
+  },
+  "scripts": {
+    "check-format": "prettier --check \"**/*.{json,md,yml,yaml}\"",
+    "format": "prettier --write ."
+  }
+}

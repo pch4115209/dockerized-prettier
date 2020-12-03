@@ -1,0 +1,8 @@
+version: '3.7'
+
+
+services:
+  prettier:
+    build: support/prettier/
+    volumes:
+      - .:/app
