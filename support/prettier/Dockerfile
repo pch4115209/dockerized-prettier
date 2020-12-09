@@ -1,9 +1,11 @@
 FROM node:15.3.0-buster-slim
 
-COPY package*.json ./
+ENV WORKING_DIR=app
+
+WORKDIR /cwd
+
+COPY package*.json /cwd
 
 RUN yarn install
 
-WORKDIR app
-#
-#ENTRYPOINT ["yarn", "check-format"]
+ENTRYPOINT ["yarn", "format"]

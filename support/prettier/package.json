@@ -8,7 +8,7 @@
     "prettier-plugin-sh": "^0.6.0"
   },
   "scripts": {
-    "check-format": "prettier --check \"**/*.{json,md,yml,yaml}\"",
-    "format": "prettier --write ."
+    "check-format": "prettier --check \"/${WORKING_DIR}/**/*.{json,md,yml,yaml}\"",
+    "format": "prettier --write /${WORKING_DIR}/"
   }
 }

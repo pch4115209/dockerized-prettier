@@ -2,10 +2,18 @@
 
 set -eu
 
-cd $(dirname $0)/..
+cd "$(dirname "$0")"/..
 
-trap "docker-compose down" 0
+trap "docker-compose -f docker-compose.prettier.yml down" 0
 
-docker-compose -f docker-compose.prettier.yml run --rm prettier "$@"
+docker-compose -f docker-compose.prettier.yml build prettier
+
+WORKING_DIR=${WORKING_DIR:-app}
+
+docker-compose -f docker-compose.prettier.yml \
+              run --rm \
+              -e WORKING_DIR="${WORKING_DIR}" \
+              prettier \
+              "$@"
 
 echo "Prettier format completed"

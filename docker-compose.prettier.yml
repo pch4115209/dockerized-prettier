@@ -1,8 +1,10 @@
-version: '3.7'
-
+version: "3.7"
 
 services:
   prettier:
     build: support/prettier/
+    container_name: dockerized-prettier-beta
+    environment:
+      - WORKING_DIR=app
     volumes:
       - .:/app
