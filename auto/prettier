@@ -9,10 +9,15 @@ trap "docker-compose -f docker-compose.prettier.yml down" 0
 docker-compose -f docker-compose.prettier.yml build prettier
 
 WORKING_DIR=${WORKING_DIR:-app}
+if [ $WORKING_DIR != 'app' ]; then
+  WORKING_DIR_FULL_PATH="app/${WORKING_DIR}"
+else
+  WORKING_DIR_FULL_PATH=$WORKING_DIR
+fi
 
 docker-compose -f docker-compose.prettier.yml \
               run --rm \
-              -e WORKING_DIR="${WORKING_DIR}" \
+              -e WORKING_DIR="${WORKING_DIR_FULL_PATH}" \
               prettier \
               "$@"
 

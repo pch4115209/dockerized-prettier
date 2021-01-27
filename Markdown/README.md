@@ -50,3 +50,8 @@ For the following commands, you will need access to the VPN and to be authentica
 ```shell script
 ./auto/breeze test udfs
 ```
+
+| Name                                                                            | Resolution                                                                                                                                                                                                             | Note                                                                                               |
+| ------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
+| [Comps Build] proc_validateDailyListingsAndAuctions Fail at YYYY mm:ss - ERROR  | This is caused by 0 listing ingested on the day. To verify it, 1). Check Proptrack-daily-export-build DAG 2). Log on Listing Prod Server or/and Comps Build Server to check tables `data_listings` and `data_auctions` | This Alarm is not auto resolvable and will result in **blocking** job in PT side.                  |
+| Comps Build] proc_validateDailyListingsAndAuctions Fail at YYYY mm:ss - WARNING | This is can be caused by 1). listing threshold check (+-30% of prev days listings) 2). listing rolling week threshold check (+-30% of same period last year) 3). listing auction volume check (>0)                     | This is not auto resolvabl, and this warning alarm will **NOT** result in blocking job in PT side. |
